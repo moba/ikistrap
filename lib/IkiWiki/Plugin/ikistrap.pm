@@ -47,8 +47,8 @@ sub refresh() {
 	return 0 unless($config{bootstrap_local});
 	mkdir("$config{destdir}/css");
 	mkdir("$config{destdir}/fonts");
-	check("css/bootstrap.min.css", "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css");
-	check("js/bootstrap.min.js", "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js");
+	check("css/bootstrap.min.css", "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css");
+	check("js/bootstrap.min.js", "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js");
 	check("css/font-awesome.min.css", "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
 	check("fonts/fontawesome-webfont.eot", "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/fonts/fontawesome-webfont.eot");
 	check("fonts/fontawesome-webfont.woff2", "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/fonts/fontawesome-webfont.woff2");

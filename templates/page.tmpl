@@ -56,18 +56,19 @@
 <body>
 	<div id="notfooter">
 		<div id="header">
-		<header class="navbar navbar-dark bg-inverse navbar-full">
-			<div class="container">
-				<button type="button" class="navbar-toggler hidden-sm-up pull-xs-right" data-toggle="collapse" data-target="#header-nav">&#9776;</button>
-
-				<ul class="nav navbar-nav">
+		<nav class="navbar navbar-toggleable-md fixed-top navbar-light bg-faded">
+                <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="<TMPL_VAR BASEURL>"><TMPL_VAR TITLE></a>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
 					<TMPL_LOOP NAME="PARENTLINKS">
-					<li class="nav-item <TMPL_UNLESS NAME="DEPTH_0">hidden-md-down</TMPL_UNLESS>"><a class="nav-link" href="<TMPL_VAR URL>"><TMPL_VAR PAGE></a></li>
+                        <li class="nav-item <TMPL_UNLESS NAME="DEPTH_0">hidden-md-down</TMPL_UNLESS>"><a class="nav-link" href="<TMPL_VAR URL>"><TMPL_VAR PAGE></a></li>
 					</TMPL_LOOP>
-					<li class="nav-item"><a class="nav-link active <TMPL_IF HAS_PARENTLINKS>hidden-md-down</TMPL_IF>" href="#"><TMPL_VAR TITLE><TMPL_IF ISTRANSLATION>&nbsp;(<TMPL_VAR PERCENTTRANSLATED>%)</TMPL_IF></a></li>
-				</ul>
+					    <li class="nav-item active"><a class="nav-link <TMPL_IF HAS_PARENTLINKS>hidden-md-down</TMPL_IF>" href="#"><TMPL_VAR TITLE><TMPL_IF ISTRANSLATION>&nbsp;(<TMPL_VAR PERCENTTRANSLATED>%)</TMPL_IF></a></li>
+    				</ul>
 
-				<div class="collapse navbar-toggleable-xs" id="header-nav">
 					<TMPL_UNLESS DYNAMIC>
 					<TMPL_IF SEARCHFORM>
 					<TMPL_VAR SEARCHFORM>
@@ -76,7 +77,7 @@
 
 					<TMPL_IF OTHERLANGUAGES>
 					<nav id="otherlanguages" class="pull-xs-right">
-						<ul class="nav navbar-nav">
+						<ul class="nav navbar-nav mr-auto">
 							<TMPL_LOOP OTHERLANGUAGES>
 							<li class="nav-item">
 								<a class="nav-link" href="<TMPL_VAR URL>"><TMPL_VAR LANGUAGE></a>
@@ -87,46 +88,45 @@
 					</nav>
 					</TMPL_IF>
 
-					<TMPL_IF HAVE_ACTIONS>
-					<nav class="actions pull-xs-right">
-						<ul class="nav navbar-nav">
-							<TMPL_IF EDITURL>
-							<li class="nav-item"><a class="nav-link" href="<TMPL_VAR EDITURL>" rel="nofollow"><i class="fa fa-pencil"></i>Edit</a></li>
-							</TMPL_IF>
-							<TMPL_IF RECENTCHANGESURL>
-							<li class="nav-item"><a class="nav-link" href="<TMPL_VAR RECENTCHANGESURL>">RecentChanges</a></li>
-							</TMPL_IF>
-							<TMPL_IF HISTORYURL>
-							<li class="nav-item"><a class="nav-link" href="<TMPL_VAR HISTORYURL>">History</a></li>
-							</TMPL_IF>
-							<TMPL_IF GETSOURCEURL>
-							<li class="nav-item"><a class="nav-link" href="<TMPL_VAR GETSOURCEURL>">Source</a></li>
-							</TMPL_IF>
-							<TMPL_IF PREFSURL>
-							<li class="nav-item"><a class="nav-link" href="<TMPL_VAR PREFSURL>"><i class="fa fa-cog"></i>Preferences</a></li>
-							</TMPL_IF>
-							<TMPL_IF ACTIONS>
-							<TMPL_LOOP ACTIONS>
-							<li class="nav-item nav-link"><TMPL_VAR ACTION></li>
-							</TMPL_LOOP>
-							</TMPL_IF>
-							<TMPL_IF COMMENTSLINK>
-							<li class="nav-item nav-link"><TMPL_VAR COMMENTSLINK></li>
-							<TMPL_ELSE>
-							<TMPL_IF DISCUSSIONLINK>
-							<li class="nav-item nav-link"><TMPL_VAR DISCUSSIONLINK></li>
-							</TMPL_IF>
-							</TMPL_IF>
-						</ul>
-					</nav>
-					</TMPL_IF>
+                     <TMPL_IF HAVE_ACTIONS>
+                     <nav class="actions pull-xs-right">
+                         <ul class="nav navbar-nav">
+                             <TMPL_IF EDITURL>
+                             <li class="nav-item"><a class="nav-link" href="<TMPL_VAR EDITURL>" rel="nofollow"><i class="fa fa-fw fa-pencil"></i>Edit</a></li>
+                             </TMPL_IF>
+                             <TMPL_IF RECENTCHANGESURL>
+                             <li class="nav-item"><a class="nav-link" href="<TMPL_VAR RECENTCHANGESURL>">RecentChanges</a></li>
+                             </TMPL_IF>
+                             <TMPL_IF HISTORYURL>
+                             <li class="nav-item"><a class="nav-link" href="<TMPL_VAR HISTORYURL>">History</a></li>
+                             </TMPL_IF>
+                             <TMPL_IF GETSOURCEURL>
+                             <li class="nav-item"><a class="nav-link" href="<TMPL_VAR GETSOURCEURL>">Source</a></li>
+                             </TMPL_IF>
+                             <TMPL_IF PREFSURL>
+                             <li class="nav-item"><a class="nav-link" href="<TMPL_VAR PREFSURL>"><i class="fa fa-fw fa-cog"></i>Preferences</a></li>
+                             </TMPL_IF>
+                             <TMPL_IF ACTIONS>
+                             <TMPL_LOOP ACTIONS>
+                             <li class="nav-item nav-link"><TMPL_VAR ACTION></li>
+                             </TMPL_LOOP>
+                             </TMPL_IF>
+                             <TMPL_IF COMMENTSLINK>
+                             <li class="nav-item nav-link"><TMPL_VAR COMMENTSLINK></li>
+                             <TMPL_ELSE>
+                             <TMPL_IF DISCUSSIONLINK>
+                             <li class="nav-item nav-link"><TMPL_VAR DISCUSSIONLINK></li>
+                             </TMPL_IF>
+                             </TMPL_IF>
+                         </ul>
+                     </nav>
+                     </TMPL_IF>
 
 					<TMPL_UNLESS DYNAMIC>
 					<TMPL_VAR TRAILS>
 					</TMPL_UNLESS>
 				</div>
-			</div>
-		</header>
+        </nav>
 		</div>
 
 		<div class="container">
@@ -180,7 +180,7 @@
 			<TMPL_VAR TRAILS>
 			<TMPL_IF TAGS>
 			<span class="tags">
-				<i class="fa fa-tag"></i>Tags:
+				<i class="fa fa-fw fa-tag"></i>Tags:
 				<TMPL_LOOP TAGS>
 				<TMPL_VAR LINK>
 				</TMPL_LOOP>
@@ -189,7 +189,7 @@
 
 			<TMPL_IF BACKLINKS>
 			<span id="backlinks">
-				<i class="fa fa-link"></i>Links:
+				<i class="fa fa-fw fa-link"></i>Links:
 				<TMPL_LOOP BACKLINKS>
 				<a href="<TMPL_VAR URL>"><TMPL_VAR PAGE></a>
 				</TMPL_LOOP>
