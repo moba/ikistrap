@@ -1,0 +1,31 @@
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/cct-ikiwiki/example.html;
+
+	index index.html index.htm;
+
+	server_name _;
+
+	location / {
+		location ~ .cgi {
+			fastcgi_pass unix:/var/run/fcgiwrap.socket;
+			fastcgi_index /var/www/cct-ikiwiki/example/ikiwiki.cgi;
+			fastcgi_param SCRIPT_FILENAME /var/www/cct-ikiwiki/example/ikiwiki.cgi;
+			fastcgi_param DOCUMENT_ROOT /var/www/cct-ikiwiki/;
+			include /etc/nginx/fastcgi_params;
+			gzip off;
+		}
+		try_files $uri $uri/ =404;
+		error_page 404 @ikiwiki404;
+	}
+
+	location @ikiwiki404 {
+		fastcgi_pass unix:/var/run/fcgiwrap.socket;
+        fastcgi_index /var/www/cct-ikiwiki/example/ikiwiki.cgi;
+        fastcgi_param SCRIPT_FILENAME /var/www/cct-ikiwiki/example/ikiwiki.cgi;
+        fastcgi_param DOCUMENT_ROOT /var/www/cct-ikiwiki/;
+		include /etc/nginx/fastcgi_params;
+	}
+}
